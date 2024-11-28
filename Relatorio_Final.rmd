@@ -1,0 +1,53 @@
+---
+title: "Relatório Quarto" # -----> Título
+subtitle: "Nanofiltração do Soro de Leite" # -----> Subtítulo
+author: "Eduardo Senger" # -----> Autor
+date: "2024-11-17" # -----> Data 
+date-format: short # -----> Formato de data curto: dd/mm/aaaa
+lang: pt # -----> Linguagem: português
+format: 
+  pdf: 
+    code-fold: true # -----> code-fold: `true` para "ocultar" o bloco de códigos
+---
+
+**INTRODUÇÃO AO TEMA:**
+
+A nanofiltração do soro de leite é uma etapa fundamental no processamento de derivados lácteos, permitindo a separação seletiva de componentes como proteínas, sais minerais e lactose. Esse processo tem impacto direto na qualidade dos produtos finais, como concentrados proteicos e permeados, que são amplamente utilizados na indústria alimentícia.
+
+O controle da pressão na máquina de nanofiltração é um fator crítico para garantir a eficiência e a estabilidade desse processo. Variações de pressão podem afetar a performance da membrana, comprometer a qualidade do produto obtido e até mesmo causar danos ao equipamento. Por isso, monitorar e compreender essas variações é essencial para manter a integridade do sistema e otimizar a operação.
+
+Este relatório apresenta uma análise detalhada das variações de pressão em uma máquina de nanofiltração do soro de leite. Serão discutidos os dados coletados, as possíveis causas das flutuações e suas implicações no processo produtivo, oferecendo subsídios para aprimoramentos operacionais e melhorias contínuas.
+
+**CAPTURA DE DADOS:**
+
+O dataset utilizado vem dos dados obtidos da máquina de nanofiltração do soro de leite instalada na empresa Laticínio Lactvit. Com esse dataset foi usado o Google Colab para criar uma matriz de correlação representada por um heatmap para mostrar o valor do coeficiente de correlação entre duas variáveis. O dataset foi usado diretamente, sem transformações ou váriaveis criadas, utilizando apenas informações do dataset.
+
+![](https://github.com/Edsenger/Trabalho-Data-Science-Ap/blob/main/image.png?raw=true){width="475" height="348"}
+
+**Interpretação dos Coeficientes:**
+
+-   1.0 ou próximo: Correlação positiva forte. -1.0 ou próximo: Correlação negativa forte. 0 ou próximo: Sem correlação ou correlação fraca.
+
+**Pontos-chave das relações:**
+
+1.  Correlação forte e positiva:
+
+-   Pressão 1 e Pressão Base (0.9): Mudanças na Pressão 1 influenciam diretamente a Pressão Base.
+
+-   Abertura Válvula e Vazão Concentrado (0.7): Indica que a abertura da válvula aumenta a vazão do concentrado.
+
+-   Sólidos Totais Concentrado e F.C. (0.6): A concentração de sólidos no concentrado está fortemente ligada ao Fator de Concentração (F.C.).
+
+2.  Correlação negativa forte:
+
+-   Abertura Válvula e Pressão Base (-0.7): Quando a válvula abre mais, a pressão base tende a diminuir.
+
+-   Pressão 2 e Temperatura (-0.4): Indica uma relação inversa moderada entre a pressão e a temperatura.
+
+## Conclusões gerais:
+
+Variáveis relacionadas ao sistema de fluxo (como Pressão, Vazão e Abertura de Válvula) têm alta correlação entre si, sendo que elas estão diretamente ligadas para o andamento do processo onde a abertura da válvula influencia diretamente na pressão. A relação entre sólidos totais e variáveis operacionais indica um comportamento esperado no processo de concentração. Essa análise pode ajudar na tomada de decisões operacionais, focando nas variáveis mais interdependentes.Um dos principais insights obtidos a partir do gráfico é que, quando a vazão se mantém estável, os demais parâmetros não apresentam variações significativas. Isso indica que, à medida que o filtro acumula impurezas, a pressão tende a aumentar. Esse comportamento mostra que o acúmulo de sólidos no filtro afeta diretamente a pressão do sistema.
+
+## Explicação de Permeados:
+
+No relatório, é permitido analisar múltiplas variáveis conforme a demanda. Também podem calcular a previsão do desperdício de insumo. Para isso, utiliza-se a regressão logística, onde as principais variáveis mais correlacionadas são selecionadas como parâmetros, possibilitando uma estimativa mais precisa e fundamentada do comportamento do sistema. Esse processo facilita a identificação das variáveis com maior impacto no desperdício, otimizando a gestão de recursos e reduzindo perdas.
